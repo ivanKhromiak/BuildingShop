@@ -44,6 +44,11 @@ namespace BuildingShop.Web.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [StringLength(25, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 2)]
+            [Display(Name = "User name")]
+            public string UserName { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
