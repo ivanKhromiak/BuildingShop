@@ -1,8 +1,6 @@
 ﻿using BuildingShop.Domain.DomainObjects;
+using BuildingShop.Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace BuildingShop.Persistence
 {
@@ -16,5 +14,11 @@ namespace BuildingShop.Persistence
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Product> Products { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.SeedData();
+        }
     }
 }
