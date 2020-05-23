@@ -14,6 +14,8 @@ using Microsoft.Extensions.Hosting;
 using BuildingShop.Domain;
 using BuildingShop.Persistence.Identity;
 using BuildingShop.Persistence;
+using BuildingShop.BusinessLogic.Interfaces;
+using BuildingShop.BusinessLogic.Services;
 
 namespace BuildingShop.Web
 {
@@ -28,6 +30,7 @@ namespace BuildingShop.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IProductService, ProductService>();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DataConnection")));
 
