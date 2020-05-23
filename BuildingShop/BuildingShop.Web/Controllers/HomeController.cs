@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BuildingShop.Web.Models;
+using BuildingShop.BusinessLogic.Interfaces;
 
 namespace BuildingShop.Web.Controllers
 {
@@ -13,14 +14,17 @@ namespace BuildingShop.Web.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IProductService _productService;
+
+        public HomeController(ILogger<HomeController> logger, IProductService productService)
         {
             _logger = logger;
+            _productService = productService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_productService.GetAllProducts());
         }
 
         public IActionResult Privacy()

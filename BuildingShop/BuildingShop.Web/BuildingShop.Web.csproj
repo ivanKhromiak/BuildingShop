@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BuildingShop.BusinessLogic\BuildingShop.BusinessLogic.csproj" />
     <ProjectReference Include="..\BuildingShop.Domain\BuildingShop.Domain.csproj" />
     <ProjectReference Include="..\BuildingShop.Persistence\BuildingShop.Persistence.csproj" />
   </ItemGroup>
