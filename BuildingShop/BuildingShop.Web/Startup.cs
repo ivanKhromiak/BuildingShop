@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BuildingShop.Domain;
 using BuildingShop.Persistence.Identity;
+using BuildingShop.Persistence;
 
 namespace BuildingShop.Web
 {
@@ -25,9 +26,11 @@ namespace BuildingShop.Web
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DataConnection")));
+
             services.AddDbContext<UsersDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("UsersConnection")));
 
