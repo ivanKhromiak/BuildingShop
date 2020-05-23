@@ -1,6 +1,7 @@
 ﻿using BuildingShop.Domain.DomainObjects;
 using BuildingShop.Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace BuildingShop.Persistence
 {
@@ -18,6 +19,7 @@ namespace BuildingShop.Persistence
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
             builder.SeedData();
         }
     }
