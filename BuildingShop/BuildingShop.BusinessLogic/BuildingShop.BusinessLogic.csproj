@@ -6,7 +6,10 @@
 
   <ItemGroup>
     <Folder Include="Interfaces\" />
-    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BuildingShop.Persistence\BuildingShop.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
