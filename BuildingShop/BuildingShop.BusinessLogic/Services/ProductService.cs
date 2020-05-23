@@ -1,4 +1,5 @@
-﻿using BuildingShop.Domain.DomainObjects;
+﻿using BuildingShop.BusinessLogic.Interfaces;
+using BuildingShop.Domain.DomainObjects;
 using BuildingShop.Persistence;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace BuildingShop.BusinessLogic.Services
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
         private readonly ApplicationDbContext _context;
 
