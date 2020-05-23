@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace BuildingShop.Persistence.Migrations
+namespace BuildingShop.Persistence.Identity.Migrations
 {
     [DbContext(typeof(UsersDbContext))]
     [Migration("20200522154018_Initial")]

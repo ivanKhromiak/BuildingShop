@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace BuildingShop.Persistence
+namespace BuildingShop.Persistence.Identity
 {
     public class UsersDbContext : IdentityDbContext<User>
     {

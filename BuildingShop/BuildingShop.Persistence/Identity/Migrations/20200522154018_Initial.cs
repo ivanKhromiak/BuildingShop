@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace BuildingShop.Persistence.Migrations
+namespace BuildingShop.Persistence.Identity.Migrations
 {
     public partial class Initial : Migration
     {

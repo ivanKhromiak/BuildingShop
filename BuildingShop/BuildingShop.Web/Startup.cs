@@ -12,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BuildingShop.Domain;
-using BuildingShop.Persistence;
+using BuildingShop.Persistence.Identity;
 
 namespace BuildingShop.Web
 {
