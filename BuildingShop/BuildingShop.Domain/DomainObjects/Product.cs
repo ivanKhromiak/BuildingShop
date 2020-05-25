@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BuildingShop.Domain.DomainObjects
 {
-    public class Product: BaseEntity
+    public class Product : BaseEntity
     {
         public string Name { get; set; }
 
@@ -17,5 +17,7 @@ namespace BuildingShop.Domain.DomainObjects
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }
+
+        public Dictionary<string, string> Сharacteristics { get; set; }
     }
 }
