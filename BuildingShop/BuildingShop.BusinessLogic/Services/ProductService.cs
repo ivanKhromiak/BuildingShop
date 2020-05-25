@@ -1,6 +1,7 @@
 ﻿using BuildingShop.BusinessLogic.Interfaces;
 using BuildingShop.Domain.DomainObjects;
 using BuildingShop.Persistence;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace BuildingShop.BusinessLogic.Services
 
         public List<Product> GetAllProducts()
         {
-            return _context.Products.ToList();
+            return _context.Products.Include(p => p.Category).ToList();
         }
     }
 }
