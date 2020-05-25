@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BuildingShop.Domain.DomainObjects
 {
-    public class ShopItem : BaseEntity
+    public class ShopCartItem : BaseEntity
     {
         public int ProductId { get; set; }
         public Product Product { get; set; }
