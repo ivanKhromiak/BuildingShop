@@ -11,7 +11,7 @@ namespace BuildingShop.Persistence.Configuration
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            builder.Property(p => p.Price).HasColumnType("decimal(12, 6)");
+            builder.Property(p => p.Price).HasColumnType("decimal(12, 2)");
         }
     }
 }
