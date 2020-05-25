@@ -10,11 +10,11 @@
 </div>
 
 <div class="container">
-    <div class="row mt-5 mb-2">
+    <div class="row mt-5 mb-2 offset-md-1 align-items-center">
         @{
             foreach (var product in Model)
             {
-                <div class="col-lg-3">
+                <div class="p-3 mr-2 mb-2 border">
                     <h2>@product.Name</h2>
                     <p>Ціна: @product.Price</p>
                     <p>Наявна кількість: @product.Amount</p>
