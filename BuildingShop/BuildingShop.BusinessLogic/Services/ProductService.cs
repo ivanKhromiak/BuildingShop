@@ -22,5 +22,10 @@ namespace BuildingShop.BusinessLogic.Services
         {
             return _context.Products.Include(p => p.Category).ToList();
         }
+
+        public Product GetProduct(int id)
+        {
+            return _context.Products.Include(p => p.Category).Where(p => p.Id == id).FirstOrDefault();
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace BuildingShop.BusinessLogic.Interfaces
     public interface IProductService
     {
         List<Product> GetAllProducts();
+        Product GetProduct(int id);
     }
 }
