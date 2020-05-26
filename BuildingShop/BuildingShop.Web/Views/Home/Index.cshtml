@@ -10,15 +10,16 @@
 </div>
 
 <div class="container">
-    <div class="row mt-5 mb-2 offset-md-1 align-items-center">
+    <div class="row mt-5 mb-2 offset-md-1">
         @{
             foreach (var product in Model)
             {
-                <div class="p-3 mr-2 mb-2 border">
+                <div class="p-3 mr-2 mb-2 border d-flex flex-column">
                     <h2>@product.Name</h2>
                     <p>Ціна: @product.Price</p>
                     <p>Наявна кількість: @product.Amount</p>
                     <p>Категорія: @product.Category.Name</p>
+                    <a class="btn btn-dark" href="">Детальніше</a>
                 </div>
             }
         }
