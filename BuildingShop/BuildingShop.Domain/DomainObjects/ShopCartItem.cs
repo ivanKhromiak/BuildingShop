@@ -9,5 +9,6 @@ namespace BuildingShop.Domain.DomainObjects
         public int ProductId { get; set; }
         public Product Product { get; set; }
         public int Amount { get; set; }
+        public string ShopCartId { get; set; }
     }
 }
