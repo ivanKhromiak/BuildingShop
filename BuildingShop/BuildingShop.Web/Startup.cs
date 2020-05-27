@@ -30,6 +30,13 @@ namespace BuildingShop.Web
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.IsEssential = true;
+            }); 
+
             services.AddTransient<IProductService, ProductService>();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DataConnection")));
@@ -64,6 +71,8 @@ namespace BuildingShop.Web
 
             app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
