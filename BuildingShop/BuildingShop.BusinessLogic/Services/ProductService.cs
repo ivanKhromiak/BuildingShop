@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BuildingShop.BusinessLogic.Services
 {
@@ -23,9 +24,9 @@ namespace BuildingShop.BusinessLogic.Services
             return _context.Products.Include(p => p.Category).ToList();
         }
 
-        public Product GetProduct(int id)
+        public async Task<Product> GetProduct(int id)
         {
-            return _context.Products.Include(p => p.Category).Where(p => p.Id == id).FirstOrDefault();
+            return await _context.Products.Include(p => p.Category).Where(p => p.Id == id).FirstOrDefaultAsync();
         }
     }
 }

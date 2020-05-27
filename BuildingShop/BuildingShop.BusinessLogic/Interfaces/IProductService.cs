@@ -2,12 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BuildingShop.BusinessLogic.Interfaces
 {
     public interface IProductService
     {
         List<Product> GetAllProducts();
-        Product GetProduct(int id);
+        Task<Product> GetProduct(int id);
     }
 }
