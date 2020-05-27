@@ -1,18 +1,5 @@
 ﻿@model BuildingShop.Domain.DomainObjects.Product
 
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-
 <div>
     <h4>Product</h4>
     <hr />
@@ -56,8 +43,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-dark" asp-action="AddToCart" asp-route-id="@Model.Id">Купити</a> |
+    <a class="btn btn-dark" asp-controller="Home" asp-action="Index">Повернутися назад до магазину</a>
 </div>
-</body>
-</html>
