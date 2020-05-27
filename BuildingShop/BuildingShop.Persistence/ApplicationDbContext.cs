@@ -16,6 +16,8 @@ namespace BuildingShop.Persistence
 
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<ShopCartItem> ShopCartItems { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
