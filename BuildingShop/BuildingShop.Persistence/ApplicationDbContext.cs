@@ -16,7 +16,13 @@ namespace BuildingShop.Persistence
 
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<ProductAmountTracker> ProductAmountTrackers { get; set; }
+
         public DbSet<ShopCartItem> ShopCartItems { get; set; }
+
+        public DbSet<Purchase> Purchases { get; set; }
+
+        public DbSet<Delivery> Deliveries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
