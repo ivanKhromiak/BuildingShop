@@ -6,7 +6,8 @@ namespace BuildingShop.BusinessLogic.Interfaces
 {
     public interface IShopCartService
     {
-        Task AddToCart(Product product, int amount, string sessionId);
+        Task AddToCart(int productId, int amount, string sessionId);
         Task<List<ShopCartItem>> GetShopCartItems(string sessionId);
+        Task Buy(string sessionId);
     }
 }
