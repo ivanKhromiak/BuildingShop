@@ -20,8 +20,8 @@ namespace BuildingShop.BusinessLogic.Services
 
         public async Task AddToCart(ShopCartItem item)
         {
-            _context.ShopCartItems.Add(item);
-            await _context.SaveChangesAsync();
+            await _context.ShopCartItems.AddAsync(item);
+            _context.SaveChanges();
         }
 
         public async Task Buy(string sessionId)
