@@ -1,47 +1,48 @@
-﻿@model BuildingShop.Domain.DomainObjects.Product
+﻿@model BuildingShop.Domain.DomainObjects.ShopCartItem
 
 <div>
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+        <dt class="col-sm-2">
+            Назва
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Product.Name)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
+        <dt class="col-sm-2">
+            Зображення
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Product.Image)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
+        <dt class="col-sm-2">
+            Ціна
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Product.Price)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Amount)
+        <dt class="col-sm-2">
+            Наявна кількість
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Amount)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
+        <dt class="col-sm-2">
+            Категорія
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category.Id)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Product.Category.Name)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Сharacteristics)
+        <dt class="col-sm-2">
+            Характеристики
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Сharacteristics)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Product.Сharacteristics)
         </dd>
     </dl>
-</div>
+</div> 
+
 <div>
-    <a class="btn btn-dark" asp-controller="ShopCart" asp-action="AddToCart" 
-       asp-route-product="model" asp->Купити</a> |
+    <a class="btn btn-dark" asp-controller="ShopCart" asp-action="AddToCart"
+       asp-route-productId="model.Id" asp-route-amount="">Купити</a> |
     <a class="btn btn-dark" asp-controller="Home" asp-action="Index">Повернутися назад до магазину</a>
 </div>
