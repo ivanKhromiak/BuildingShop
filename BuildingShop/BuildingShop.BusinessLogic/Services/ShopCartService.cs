@@ -19,10 +19,15 @@ namespace BuildingShop.BusinessLogic.Services
             _context = context;
         }
 
-        public async Task AddToCart(Product product, int amount, string sessionId)
+        public async Task AddToCart(int productId, int amount, string sessionId)
         {
-            _context.ShopCartItems.Add(new ShopCartItem() { Product = product, Amount = amount, ShopCartId = sessionId });
+            _context.ShopCartItems.Add(new ShopCartItem() { ProductId = productId, Amount = amount, ShopCartId = sessionId });
             await _context.SaveChangesAsync();
+        }
+
+        public Task Buy(string sessionId)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<List<ShopCartItem>> GetShopCartItems(string sessionId)
