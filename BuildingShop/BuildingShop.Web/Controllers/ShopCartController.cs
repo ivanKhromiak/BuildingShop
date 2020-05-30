@@ -23,11 +23,12 @@ namespace BuildingShop.Web.Controllers
             return View(items);
         }
 
+        [HttpPost]
         public IActionResult AddToCart(ShopCartItem item)
         {
             item.ShopCartId = GetCartId();
             _shopCartService.AddToCart(item);
-            return RedirectToAction("Details", "Home", item.ProductId);
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Buy()
