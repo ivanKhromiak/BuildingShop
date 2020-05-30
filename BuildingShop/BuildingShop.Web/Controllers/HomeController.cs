@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BuildingShop.Web.Models;
 using BuildingShop.BusinessLogic.Interfaces;
+using BuildingShop.Domain.DomainObjects;
 
 namespace BuildingShop.Web.Controllers
 {
@@ -41,7 +42,7 @@ namespace BuildingShop.Web.Controllers
                 return NotFound();
             }
 
-            return View(product);
+            return View(new ShopCartItem { Product = product });
         }
 
         public IActionResult Privacy()
