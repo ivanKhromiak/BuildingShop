@@ -10,6 +10,7 @@ using BuildingShop.Persistence.Identity;
 using BuildingShop.Persistence;
 using BuildingShop.BusinessLogic.Interfaces;
 using BuildingShop.BusinessLogic.Services;
+using System;
 
 namespace BuildingShop.Web
 {
@@ -28,6 +29,7 @@ namespace BuildingShop.Web
 
             services.AddSession(options =>
             {
+                options.IdleTimeout = TimeSpan.FromMinutes(20);
                 options.Cookie.IsEssential = true;
             }); 
 
