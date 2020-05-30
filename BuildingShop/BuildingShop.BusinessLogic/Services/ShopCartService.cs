@@ -61,7 +61,10 @@ namespace BuildingShop.BusinessLogic.Services
 
         public async Task<List<ShopCartItem>> GetShopCartItems(string sessionId)
         {
-            return await _context.ShopCartItems.Where(i => i.ShopCartId == sessionId).ToListAsync();
+            return await _context.ShopCartItems
+                .Where(i => i.ShopCartId == sessionId)
+                .Include(s => s.Product)
+                .ToListAsync();
         }
     }
 }
