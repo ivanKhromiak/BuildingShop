@@ -2,7 +2,7 @@
 
 namespace BuildingShop.Domain.DomainObjects
 {
-    public class Delivery
+    public class Delivery : BaseEntity
     {
         public DateTime Date { get; set; }
 
