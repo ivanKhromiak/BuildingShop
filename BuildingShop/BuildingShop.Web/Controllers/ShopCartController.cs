@@ -1,5 +1,6 @@
 ﻿using System;
 using BuildingShop.BusinessLogic.Interfaces;
+using BuildingShop.Domain.DomainObjects;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,11 +22,11 @@ namespace BuildingShop.Web.Controllers
             return View(items);
         }
 
-        public IActionResult AddToCart(int productId, int amount)
+        public IActionResult AddToCart(ShopCartItem item)
         {
-            string CartId = GetCartId();
-            _shopCartService.AddToCart(productId, amount, CartId);
-            return RedirectToAction("Details", "Product", productId);
+            item.ShopCartId = GetCartId();
+            _shopCartService.AddToCart(item);
+            return RedirectToAction("Details", "Home", item.ProductId);
         }
 
         public IActionResult Buy()

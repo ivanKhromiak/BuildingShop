@@ -18,9 +18,9 @@ namespace BuildingShop.BusinessLogic.Services
             _context = context;
         }
 
-        public async Task AddToCart(int productId, int amount, string sessionId)
+        public async Task AddToCart(ShopCartItem item)
         {
-            _context.ShopCartItems.Add(new ShopCartItem() { ProductId = productId, Amount = amount, ShopCartId = sessionId });
+            _context.ShopCartItems.Add(item);
             await _context.SaveChangesAsync();
         }
 
