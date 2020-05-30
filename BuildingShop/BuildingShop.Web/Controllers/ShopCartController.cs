@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using BuildingShop.BusinessLogic.Interfaces;
 using BuildingShop.Domain.DomainObjects;
 using Microsoft.AspNetCore.Http;
@@ -15,10 +16,10 @@ namespace BuildingShop.Web.Controllers
             _shopCartService = shopCartService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             string CartId = GetCartId();
-            var items = _shopCartService.GetShopCartItems(CartId);
+            var items = await _shopCartService.GetShopCartItems(CartId);
             return View(items);
         }
 
