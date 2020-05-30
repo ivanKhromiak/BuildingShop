@@ -42,6 +42,8 @@
 </div>
 
 <form asp-controller="ShopCart" asp-action="AddToCart">
+    <input type="hidden" value="@Model.ProductId" name="ProductId" />
+    <input type="hidden" value="@Model.Product" name="Product" />
     <div class="form-group">
         <label asp-for="Amount"></label>
         <input asp-for="Amount" class="form-control" />
