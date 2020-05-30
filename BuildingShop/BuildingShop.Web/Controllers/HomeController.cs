@@ -27,6 +27,23 @@ namespace BuildingShop.Web.Controllers
             return View(_productService.GetAllProducts());
         }
 
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var product = await _productService.GetProduct(id.Value);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
+        }
+
         public IActionResult Privacy()
         {
             return View();
