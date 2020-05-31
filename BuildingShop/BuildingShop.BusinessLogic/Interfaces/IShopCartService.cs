@@ -8,6 +8,6 @@ namespace BuildingShop.BusinessLogic.Interfaces
     {
         Task AddToCart(ShopCartItem item);
         Task<List<ShopCartItem>> GetShopCartItems(string sessionId);
-        Task Buy(string sessionId);
+        void Buy(string sessionId);
     }
 }

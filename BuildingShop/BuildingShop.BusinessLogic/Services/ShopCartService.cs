@@ -24,12 +24,12 @@ namespace BuildingShop.BusinessLogic.Services
             _context.SaveChanges();
         }
 
-        public async Task Buy(string sessionId)
+        public void Buy(string sessionId)
         {
-            var products = await _context.ShopCartItems
+            var products = _context.ShopCartItems
                 .Where(i => i.ShopCartId == sessionId)
-                .GroupBy(p => p.Product)
-                .ToListAsync();
+                .ToList()
+                .GroupBy(p => p.ProductId);
 
             foreach (var product in products)
             {
@@ -44,13 +44,14 @@ namespace BuildingShop.BusinessLogic.Services
 
                 var amountChange = new ProductAmountTracker()
                 {
+                    ProductId = product.Key,
                     Amount = _context.Products.Find(product.Key).Amount,
                     Date = DateTime.Now
                 };
                 _context.Add(amountChange);
                 _context.SaveChanges();
 
-                var purchase = new Purchase() { Product = product.Key, Amount = totalAmount, Date = DateTime.Now };
+                var purchase = new Purchase() { ProductId = product.Key, Amount = totalAmount, Date = DateTime.Now };
                 _context.Add(purchase);
                 _context.SaveChanges();
             }
