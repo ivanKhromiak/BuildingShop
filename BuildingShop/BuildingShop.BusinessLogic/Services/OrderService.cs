@@ -63,6 +63,9 @@ namespace BuildingShop.BusinessLogic.Services
             order.AverageSalesPerDay = (decimal)(order.TotalOutcome / (order.EndDate - order.StarDate).TotalDays);
 
             order.FinalNumber = (int)(order.AverageSalesPerDay * (decimal)(order.EndDate - order.StarDate).TotalDays);
+
+            _context.Orders.Add(order);
+            _context.SaveChanges();
         }
 
         public async Task DeleteOrder(int orderId)
