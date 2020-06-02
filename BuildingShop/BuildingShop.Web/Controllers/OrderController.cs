@@ -57,7 +57,7 @@ namespace BuildingShop.Web.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,StarDate,EndDate,StartingAmount,EndAmount,TotalIncome,TotalOutcome,MaxDaysWithoutProduct,AverageSalesPerDay,MinSalePerDay,FinalNumber,Id")] Order order)
+        public async Task<IActionResult> Create([Bind("ProductId,StarDate,EndDate")] Order order)
         {
             if (ModelState.IsValid)
             {
