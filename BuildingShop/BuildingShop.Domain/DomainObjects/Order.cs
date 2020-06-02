@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace BuildingShop.Domain.DomainObjects
 {
@@ -10,9 +9,6 @@ namespace BuildingShop.Domain.DomainObjects
 
         public DateTime StarDate { get; set; }
         public DateTime EndDate { get; set; }
-
-        public List<Delivery> Deliveries { get; set; }
-        public List<Purchase> Purchases { get; set; }
 
         public int StartingAmount { get; set; }
         public int EndAmount { get; set; }

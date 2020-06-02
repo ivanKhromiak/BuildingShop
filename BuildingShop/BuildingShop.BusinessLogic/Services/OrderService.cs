@@ -30,15 +30,15 @@ namespace BuildingShop.BusinessLogic.Services
 
         public async Task CreateOrder(Order order)
         {
-            order.Deliveries = await _context.Deliveries
+            var Deliveries = await _context.Deliveries
                 .Where(d => d.Date <= order.EndDate && d.Date >= order.StarDate)
                 .ToListAsync();
-            order.Purchases = await _context.Purchases
+            var Purchases = await _context.Purchases
                 .Where(d => d.Date <= order.EndDate && d.Date >= order.StarDate)
                 .ToListAsync();
 
-            order.TotalIncome = order.Deliveries.Sum(d => d.Amount);
-            order.TotalOutcome = order.Purchases.Sum(d => d.Amount);
+            order.TotalIncome = Deliveries.Sum(d => d.Amount);
+            order.TotalOutcome = Purchases.Sum(d => d.Amount);
 
             order.StartingAmount = (await _context.ProductAmountTrackers
                 .Where(a => order.StarDate > a.Date)
@@ -53,16 +53,16 @@ namespace BuildingShop.BusinessLogic.Services
 
             while (currentDate <= order.EndDate)
             {
-                currentAmount += order.Deliveries.FirstOrDefault(d => d.Date == currentDate)?.Amount ?? 0;
+                currentAmount += Deliveries.FirstOrDefault(d => d.Date == currentDate)?.Amount ?? 0;
                 if (currentAmount == 0)
                 {
                     order.DaysWithoutProduct++;
                 }
-                currentAmount -= order.Purchases.FirstOrDefault(d => d.Date == currentDate)?.Amount ?? 0;
+                currentAmount -= Purchases.FirstOrDefault(d => d.Date == currentDate)?.Amount ?? 0;
                 currentDate = currentDate.AddDays(1);
             }
 
-            order.MinSalePerDay = order.Purchases.Min(p => p.Amount);
+            order.MinSalePerDay = Purchases.Min(p => p.Amount);
 
             order.AverageSalesPerDay = (decimal)(order.TotalOutcome / (order.EndDate - order.StarDate).TotalDays);
 
