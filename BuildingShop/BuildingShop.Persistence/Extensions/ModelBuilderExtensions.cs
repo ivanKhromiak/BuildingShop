@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
-using System.Text;
 using BuildingShop.Domain;
 
 namespace BuildingShop.Persistence.Extensions
@@ -14,7 +13,8 @@ namespace BuildingShop.Persistence.Extensions
         {
             builder.Entity<Category>().HasData(
                 new Category() { Id = 1, Name = "Ручні інструменту"},
-                new Category() { Id = 2, Name = "Електротовари" }
+                new Category() { Id = 2, Name = "Електротовари" },
+                new Category() { Id = 3, Name = "Ліхтарі"}
                 );
 
             builder.Entity<Product>().HasData(
@@ -43,8 +43,44 @@ namespace BuildingShop.Persistence.Extensions
                         ["Довжина"] = "40 см",
                         ["Цоколь"] = "E27"
                     }
+                },
+                new Product()
+                {
+                    Id = 3,
+                    Name = "Ліхтар BRAVIS LL-92",
+                    Amount = 28,
+                    CategoryId = 3,
+                    Price = 119m,
+                    Сharacteristics = new Dictionary<string, string>()
+                    {
+                        ["Потужність"] = "3 Вт",
+                        ["Кількість світлодіодів"] = "1",
+                        ["Яскравість"] = "240 люмен",
+                        ["Матеріал"] = "Сплав алюмінію"
+                    }
                 }
-                );
+            );
+
+            builder.Entity<ProductAmountTracker>().HasData(
+                new ProductAmountTracker() { ProductId = 3, Date = new DateTime(2020, 5, 1), Amount = 25 },
+                new ProductAmountTracker() { ProductId = 3, Date = new DateTime(2020, 5, 3), Amount = 15 },
+                new ProductAmountTracker() { ProductId = 3, Date = new DateTime(2020, 5, 4), Amount = 9 },
+                new ProductAmountTracker() { ProductId = 3, Date = new DateTime(2020, 5, 5), Amount = 5 },
+                new ProductAmountTracker() { ProductId = 3, Date = new DateTime(2020, 5, 6), Amount = 0 },
+                new ProductAmountTracker() { ProductId = 3, Date = new DateTime(2020, 5, 9), Amount = 30 },
+                new ProductAmountTracker() { ProductId = 3, Date = new DateTime(2020, 5, 10), Amount = 28 }
+            );
+
+            builder.Entity<Delivery>().HasData(
+                new Delivery() { Id = 100, ProductId = 3, Date = new DateTime(2020, 5, 9), Amount = 30}
+            );
+
+            builder.Entity<Purchase>().HasData(
+                new Purchase() { Id = 100, ProductId = 3, Date = new DateTime(2020, 5, 4), Amount = 6 },
+                new Purchase() { Id = 101, ProductId = 3, Date = new DateTime(2020, 5, 5), Amount = 4 },
+                new Purchase() { Id = 102, ProductId = 3, Date = new DateTime(2020, 5, 6), Amount = 5 },
+                new Purchase() { Id = 103, ProductId = 3, Date = new DateTime(2020, 5, 10), Amount = 2 }
+            );
         }
 
         public static void SeedUserData(this ModelBuilder builder)
