@@ -12,7 +12,7 @@ namespace BuildingShop.Persistence.Extensions
         public static void SeedData(this ModelBuilder builder)
         {
             builder.Entity<Category>().HasData(
-                new Category() { Id = 1, Name = "Ручні інструменту"},
+                new Category() { Id = 1, Name = "Ручні інструменти"},
                 new Category() { Id = 2, Name = "Електротовари" },
                 new Category() { Id = 3, Name = "Ліхтарі"}
                 );
@@ -62,13 +62,13 @@ namespace BuildingShop.Persistence.Extensions
             );
 
             builder.Entity<ProductAmountTracker>().HasData(
-                new ProductAmountTracker() { ProductId = 3, Date = new DateTime(2020, 5, 1), Amount = 25 },
-                new ProductAmountTracker() { ProductId = 3, Date = new DateTime(2020, 5, 3), Amount = 15 },
-                new ProductAmountTracker() { ProductId = 3, Date = new DateTime(2020, 5, 4), Amount = 9 },
-                new ProductAmountTracker() { ProductId = 3, Date = new DateTime(2020, 5, 5), Amount = 5 },
-                new ProductAmountTracker() { ProductId = 3, Date = new DateTime(2020, 5, 6), Amount = 0 },
-                new ProductAmountTracker() { ProductId = 3, Date = new DateTime(2020, 5, 9), Amount = 30 },
-                new ProductAmountTracker() { ProductId = 3, Date = new DateTime(2020, 5, 10), Amount = 28 }
+                new ProductAmountTracker() { Id = 1, ProductId = 3, Date = new DateTime(2020, 5, 1), Amount = 25 },
+                new ProductAmountTracker() { Id = 2, ProductId = 3, Date = new DateTime(2020, 5, 3), Amount = 15 },
+                new ProductAmountTracker() { Id = 3, ProductId = 3, Date = new DateTime(2020, 5, 4), Amount = 9 },
+                new ProductAmountTracker() { Id = 4, ProductId = 3, Date = new DateTime(2020, 5, 5), Amount = 5 },
+                new ProductAmountTracker() { Id = 5, ProductId = 3, Date = new DateTime(2020, 5, 6), Amount = 0 },
+                new ProductAmountTracker() { Id = 6, ProductId = 3, Date = new DateTime(2020, 5, 9), Amount = 30 },
+                new ProductAmountTracker() { Id = 7, ProductId = 3, Date = new DateTime(2020, 5, 10), Amount = 28 }
             );
 
             builder.Entity<Delivery>().HasData(
