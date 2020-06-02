@@ -1,21 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BuildingShop.Domain.DomainObjects;
 using BuildingShop.Persistence;
+using BuildingShop.BusinessLogic.Interfaces;
 
 namespace BuildingShop.Web.Controllers
 {
     public class OrderController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IOrderService _orderService;
 
-        public OrderController(ApplicationDbContext context)
+        public OrderController(IOrderService orderService, ApplicationDbContext context)
         {
+            _orderService = orderService;
             _context = context;
         }
 
@@ -45,26 +46,21 @@ namespace BuildingShop.Web.Controllers
             return View(order);
         }
 
-        // GET: Orders/Create
         public IActionResult Create()
         {
-            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Id");
+            ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Name");
             return View();
         }
 
-        // POST: Orders/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ProductId,StarDate,EndDate")] Order order)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(order);
-                await _context.SaveChangesAsync();
+                await _orderService.CreateOrder(order);
                 return RedirectToAction(nameof(Index));
             }
+
             ViewData["ProductId"] = new SelectList(_context.Products, "Id", "Id", order.ProductId);
             return View(order);
         }
