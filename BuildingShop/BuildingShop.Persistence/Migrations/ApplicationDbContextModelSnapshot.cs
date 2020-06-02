@@ -84,6 +84,9 @@ namespace BuildingShop.Persistence.Migrations
                     b.Property<decimal>("AverageSalesPerDay")
                         .HasColumnType("decimal(12, 4)");
 
+                    b.Property<int>("DaysWithoutProduct")
+                        .HasColumnType("int");
+
                     b.Property<int>("EndAmount")
                         .HasColumnType("int");
 
@@ -91,9 +94,6 @@ namespace BuildingShop.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("FinalNumber")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MaxDaysWithoutProduct")
                         .HasColumnType("int");
 
                     b.Property<int>("MinSalePerDay")

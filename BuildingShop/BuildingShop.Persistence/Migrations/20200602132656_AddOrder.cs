@@ -30,7 +30,7 @@ namespace BuildingShop.Persistence.Migrations
                     EndAmount = table.Column<int>(nullable: false),
                     TotalIncome = table.Column<int>(nullable: false),
                     TotalOutcome = table.Column<int>(nullable: false),
-                    MaxDaysWithoutProduct = table.Column<int>(nullable: false),
+                    DaysWithoutProduct = table.Column<int>(nullable: false),
                     AverageSalesPerDay = table.Column<decimal>(type: "decimal(12, 4)", nullable: false),
                     MinSalePerDay = table.Column<int>(nullable: false),
                     FinalNumber = table.Column<int>(nullable: false)
