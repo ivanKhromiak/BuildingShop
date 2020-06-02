@@ -37,10 +37,32 @@ namespace BuildingShop.BusinessLogic.Services
             order.Purchases = _context.Purchases
                 .Where(d => d.Date <= order.EndDate && d.Date >= order.StarDate)
                 .ToList();
+            
+            order.TotalIncome = order.Purchases.Sum(d => d.Amount);
+            order.TotalOutcome = order.Deliveries.Sum(d => d.Amount);
 
             order.StartingAmount = _context.ProductAmountTrackers.Where(a => a.Date < order.StarDate).LastOrDefault().Amount;
+            order.EndAmount = order.StartingAmount + order.TotalIncome - order.TotalOutcome;
 
-            //order.EndAmount = 
+            var currentDate = order.StarDate;
+            int currentAmount = order.StartingAmount;
+
+            order.MinSalePerDay = order.Purchases.Min(p => p.Amount);
+
+            while (currentDate <= order.EndDate)
+            {
+                currentAmount += order.Deliveries.FirstOrDefault(d => d.Date == currentDate)?.Amount ?? 0
+                    - order.Purchases.FirstOrDefault(d => d.Date == currentDate)?.Amount ?? 0;
+                if(currentAmount == 0)
+                {
+                    order.DaysWithoutProduct++;
+                }
+                currentDate.AddDays(1);
+            }
+
+            order.AverageSalesPerDay = (decimal)(order.TotalOutcome / (order.EndDate - order.StarDate).TotalDays);
+
+            order.FinalNumber = (int)(order.AverageSalesPerDay * (decimal)(order.EndDate - order.StarDate).TotalDays);
         }
 
         public async Task DeleteOrder(int orderId)
