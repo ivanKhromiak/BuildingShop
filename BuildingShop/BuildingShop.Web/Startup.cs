@@ -35,6 +35,7 @@ namespace BuildingShop.Web
 
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IShopCartService, ShopCartService>();
+            services.AddTransient<IOrderService, OrderService>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DataConnection")));
