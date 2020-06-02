@@ -20,7 +20,7 @@ namespace BuildingShop.Domain.DomainObjects
         public int TotalIncome { get; set; }
         public int TotalOutcome { get; set; }
 
-        public int MaxDaysWithoutProduct { get; set; }
+        public int DaysWithoutProduct { get; set; }
         public decimal AverageSalesPerDay { get; set; }
         public int MinSalePerDay { get; set; }
         public int FinalNumber { get; set; } 
