@@ -10,11 +10,11 @@ using BuildingShop.Persistence;
 
 namespace BuildingShop.Web.Controllers
 {
-    public class OrdersController : Controller
+    public class OrderController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public OrdersController(ApplicationDbContext context)
+        public OrderController(ApplicationDbContext context)
         {
             _context = context;
         }
