@@ -20,12 +20,12 @@ namespace BuildingShop.BusinessLogic.Services
 
         public async Task<List<Order>> GetAllOrders()
         {
-            return await _context.Orders.ToListAsync();
+            return await _context.Orders.Include(o => o.Product).ToListAsync();
         }
 
         public async Task<Order> GetOrder(int orderId)
         {
-            return await _context.Orders.FindAsync(orderId);
+            return await _context.Orders.Include(p => p.Product).FirstOrDefaultAsync(o => o.Id == orderId);
         }
 
         public async Task CreateOrder(Order order)
