@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using BuildingShop.Domain.DomainObjects;
 using BuildingShop.Persistence;
 using BuildingShop.BusinessLogic.Interfaces;
+using BuildingShop.Web.Models;
 
 namespace BuildingShop.Web.Controllers
 {
@@ -20,11 +21,9 @@ namespace BuildingShop.Web.Controllers
             _context = context;
         }
 
-        // GET: Orders
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Orders.Include(o => o.Product);
-            return View(await applicationDbContext.ToListAsync());
+            return View(await _orderService.GetAllOrders());
         }
 
         // GET: Orders/Details/5
@@ -35,15 +34,18 @@ namespace BuildingShop.Web.Controllers
                 return NotFound();
             }
 
-            var order = await _context.Orders
-                .Include(o => o.Product)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (order == null)
+            var orderViewModel = new OrderViewModel();
+
+            orderViewModel.Order = await _orderService.GetOrder(id.Value);
+            orderViewModel.Purchases = null;
+            orderViewModel.Deliveries = null;
+
+            if (orderViewModel.Order == null)
             {
                 return NotFound();
             }
 
-            return View(order);
+            return View(orderViewModel);
         }
 
         public IActionResult Create()
@@ -139,7 +141,6 @@ namespace BuildingShop.Web.Controllers
 
         // POST: Orders/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var order = await _context.Orders.FindAsync(id);
