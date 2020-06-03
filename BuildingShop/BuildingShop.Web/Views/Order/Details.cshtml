@@ -1,84 +1,87 @@
-﻿@model BuildingShop.Domain.DomainObjects.Order
+﻿@model BuildingShop.Web.Models.OrderViewModel
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
 <div>
-    <h4>Order</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Product)
+        <dt class="col-sm-2">
+            Id
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Product.Id)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.Product.Id)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StarDate)
+        <dt class="col-sm-2">
+            Назва
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StarDate)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.Product.Name)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EndDate)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.StarDate)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EndDate)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.StarDate)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StartingAmount)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.EndDate)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StartingAmount)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.EndDate)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EndAmount)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.StartingAmount)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EndAmount)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.StartingAmount)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TotalIncome)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.EndAmount)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TotalIncome)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.EndAmount)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TotalOutcome)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.TotalIncome)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TotalOutcome)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.TotalIncome)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DaysWithoutProduct)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.TotalOutcome)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DaysWithoutProduct)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.TotalOutcome)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AverageSalesPerDay)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.DaysWithoutProduct)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AverageSalesPerDay)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.DaysWithoutProduct)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MinSalePerDay)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.AverageSalesPerDay)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MinSalePerDay)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.AverageSalesPerDay)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FinalNumber)
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.MinSalePerDay)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FinalNumber)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.MinSalePerDay)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Order.FinalNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Order.FinalNumber)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Order.Id" class="btn btn-dark">Редагувати</a> |
+    <a asp-action="Index" class="btn btn-dark">Повернутися до списку</a>
 </div>
