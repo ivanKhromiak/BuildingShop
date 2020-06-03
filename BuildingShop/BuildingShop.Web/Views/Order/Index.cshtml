@@ -4,46 +4,20 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Product)
+                Id продукту 
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StarDate)
+                Назва
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EndDate)
+                Початкова дата
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StartingAmount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EndAmount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalIncome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalOutcome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DaysWithoutProduct)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AverageSalesPerDay)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MinSalePerDay)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FinalNumber)
+                Кінцева дата
             </th>
             <th></th>
         </tr>
@@ -55,39 +29,17 @@
                 @Html.DisplayFor(modelItem => item.Product.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StarDate)
+                @Html.DisplayFor(modelItem => item.Product.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
+                @Convert.ToDateTime(item.StarDate).ToString("dd/MM/yyyy")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.StartingAmount)
+                @Convert.ToDateTime(item.EndDate).ToString("dd/MM/yyyy")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EndAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalIncome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalOutcome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DaysWithoutProduct)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AverageSalesPerDay)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MinSalePerDay)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FinalNumber)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Details" asp-route-id="@item.Id">Деталі</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Видалити</a>
             </td>
         </tr>
 }
