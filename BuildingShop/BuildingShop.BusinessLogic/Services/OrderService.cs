@@ -99,6 +99,7 @@ namespace BuildingShop.BusinessLogic.Services
                         deliveries.FirstOrDefault(p => p.Date == currentDate)?.Amount.ToString() ?? "-"
                     }
                 );
+                currentDate.AddDays(1);
             }
 
             return dateInfo;
