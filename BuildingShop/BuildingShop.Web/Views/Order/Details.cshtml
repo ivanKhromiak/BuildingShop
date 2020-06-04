@@ -10,9 +10,9 @@
             <th rowspan="2">Id товару</th>
             <th rowspan="2">Найменування</th>
             <th rowspan="2">Початкова кількість</th>
-            @foreach (var day in Model.Purchases)
+            @foreach (var day in Model.DateInfo)
             {
-                <td colspan="2">04.05.2020</td>
+                <td colspan="2">@day.Key</td>
             }
             <th rowspan="2">Кінцевий залишок</th>
             <th rowspan="2">Прихід</th>
@@ -24,7 +24,7 @@
             <th rowspan="2">Кінцева заявка</th>
         </tr>
         <tr>
-            @foreach (var day in Model.Purchases)
+            @for (var i = 0; i <= Model.DateInfo.Count; i++)
             {
                 <th>Прихід</th>
                 <th>Розхід</th>
@@ -34,10 +34,10 @@
             <td>@Html.DisplayFor(model => model.Order.Product.Id)</td>
             <td>@Html.DisplayFor(model => model.Order.Product.Name)</td>
             <td>@Html.DisplayFor(model => model.Order.StartingAmount)</td>
-            @foreach (var day in Model.Purchases)
+            @foreach (var day in Model.DateInfo)
             {
-                <td>2</td>
-                <td>3</td>
+                <td>@day.Value[0]</td>
+                <td>@day.Value[1]</td>
             }
             <td>@(Model.Order.StartingAmount + Model.Order.TotalIncome - Model.Order.TotalOutcome) </td>
             <td>@Html.DisplayFor(model => model.Order.TotalIncome)</td>
