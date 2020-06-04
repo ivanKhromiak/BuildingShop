@@ -79,18 +79,29 @@ namespace BuildingShop.BusinessLogic.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<List<Purchase>> GetPurchases(Order order)
+        public async Task<Dictionary<string, string[]>> GetDateInfo(Order order)
         {
-            return await _context.Purchases
+            var purchases = await _context.Purchases
                 .Where(d => d.Date <= order.EndDate && d.Date >= order.StarDate && d.ProductId == order.ProductId)
                 .ToListAsync();
-        }
+            var deliveries = await _context.Deliveries
+                .Where(d => d.Date <= order.EndDate && d.Date >= order.StarDate && d.ProductId == order.ProductId)
+                .ToListAsync();
 
-        public async Task<List<Delivery>> GetDeliveries(Order order)
-        {
-            return await _context.Deliveries
-                .Where(d => d.Date <= order.EndDate && d.Date >= order.StarDate && d.ProductId == order.ProductId)
-                .ToListAsync();
+            var currentDate = order.StarDate;
+            var dateInfo = new Dictionary<string, string[]>();
+            while (currentDate <= order.EndDate)
+            {
+                dateInfo.Add(
+                    currentDate.ToShortDateString(),
+                    new string[] { 
+                        purchases.FirstOrDefault(p => p.Date == currentDate)?.Amount.ToString() ?? "-",
+                        deliveries.FirstOrDefault(p => p.Date == currentDate)?.Amount.ToString() ?? "-"
+                    }
+                );
+            }
+
+            return dateInfo;
         }
     }
 }
