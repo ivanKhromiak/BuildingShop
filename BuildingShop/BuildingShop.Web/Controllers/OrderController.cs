@@ -35,16 +35,12 @@ namespace BuildingShop.Web.Controllers
                 return NotFound();
             }
 
-            var orderViewModel = new OrderViewModel();
-
-            orderViewModel.Order = order;
-            orderViewModel.Purchases = await _orderService.GetPurchases(order);
-            orderViewModel.Deliveries = await _orderService.GetDeliveries(order);
-
-            if (orderViewModel.Order == null)
+            var orderViewModel = new OrderViewModel() 
             {
-                return NotFound();
-            }
+                Order = order,
+                Purchases = await _orderService.GetPurchases(order),
+                Deliveries = await _orderService.GetDeliveries(order)
+            };
 
             return View(orderViewModel);
         }
