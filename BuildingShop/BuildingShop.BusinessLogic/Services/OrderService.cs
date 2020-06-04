@@ -31,10 +31,10 @@ namespace BuildingShop.BusinessLogic.Services
         public async Task CreateOrder(Order order)
         {
             var Deliveries = await _context.Deliveries
-                .Where(d => d.Date <= order.EndDate && d.Date >= order.StarDate)
+                .Where(d => d.Date <= order.EndDate && d.Date >= order.StarDate && d.ProductId == order.ProductId)
                 .ToListAsync();
             var Purchases = await _context.Purchases
-                .Where(d => d.Date <= order.EndDate && d.Date >= order.StarDate)
+                .Where(d => d.Date <= order.EndDate && d.Date >= order.StarDate && d.ProductId == order.ProductId)
                 .ToListAsync();
 
             order.TotalIncome = Deliveries.Sum(d => d.Amount);
@@ -77,6 +77,20 @@ namespace BuildingShop.BusinessLogic.Services
             var order = await _context.Orders.FindAsync(orderId);
             _context.Orders.Remove(order);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Purchase>> GetPurchases(Order order)
+        {
+            return await _context.Purchases
+                .Where(d => d.Date <= order.EndDate && d.Date >= order.StarDate && d.ProductId == order.ProductId)
+                .ToListAsync();
+        }
+
+        public async Task<List<Delivery>> GetDeliveries(Order order)
+        {
+            return await _context.Deliveries
+                .Where(d => d.Date <= order.EndDate && d.Date >= order.StarDate && d.ProductId == order.ProductId)
+                .ToListAsync();
         }
     }
 }
