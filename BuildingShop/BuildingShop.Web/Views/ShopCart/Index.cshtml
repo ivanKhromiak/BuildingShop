@@ -14,17 +14,25 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Product.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+            </tr>
+        }
     </tbody>
+    <tfoot>
+        <tr class="bg-success">
+            <td>Повна сума</td>
+            <td>@Model.Sum(i => i.Product.Price * i.Amount)</td>
+        </tr>
+    </tfoot>
+
 </table>
 
 
