@@ -9,6 +9,6 @@ namespace BuildingShop.Web.Models
     public class OrderViewModel
     {
         public Order Order { get; set; }
-        public Dictionary<string, int[]> DateInfo { get; set; }
+        public Dictionary<string, string[]> DateInfo { get; set; }
     }
 }
