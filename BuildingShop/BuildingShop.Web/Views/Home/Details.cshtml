@@ -43,7 +43,7 @@
 
 <form asp-controller="ShopCart" asp-action="AddToCart">
     <input type="hidden" value="@Model.Product.Id" name="ProductId" />
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-3">
         <label>Кількість</label>
         <input asp-for="Amount" class="form-control" />
         <span asp-validation-for="Amount" class="text-danger"></span>
