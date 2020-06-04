@@ -94,9 +94,9 @@ namespace BuildingShop.BusinessLogic.Services
             {
                 dateInfo.Add(
                     currentDate.ToShortDateString(),
-                    new string[] { 
-                        purchases.FirstOrDefault(p => p.Date == currentDate)?.Amount.ToString() ?? "-",
-                        deliveries.FirstOrDefault(p => p.Date == currentDate)?.Amount.ToString() ?? "-"
+                    new string[] {
+                        deliveries.FirstOrDefault(p => p.Date == currentDate)?.Amount.ToString() ?? "-",
+                        purchases.FirstOrDefault(p => p.Date == currentDate)?.Amount.ToString() ?? "-"                      
                     }
                 );
                 currentDate = currentDate.AddDays(1);
