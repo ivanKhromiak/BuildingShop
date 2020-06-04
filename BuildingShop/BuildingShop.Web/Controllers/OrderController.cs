@@ -38,8 +38,7 @@ namespace BuildingShop.Web.Controllers
             var orderViewModel = new OrderViewModel() 
             {
                 Order = order,
-                Purchases = await _orderService.GetPurchases(order),
-                Deliveries = await _orderService.GetDeliveries(order)
+                DateInfo = await _orderService.GetDateInfo(order)
             };
 
             return View(orderViewModel);
