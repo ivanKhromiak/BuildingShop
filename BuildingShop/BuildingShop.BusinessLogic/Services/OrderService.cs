@@ -64,7 +64,7 @@ namespace BuildingShop.BusinessLogic.Services
 
             order.MinSalePerDay = Purchases.Min(p => p.Amount);
 
-            order.AverageSalesPerDay = (decimal)(order.TotalOutcome / (order.EndDate - order.StarDate).TotalDays);
+            order.AverageSalesPerDay = (decimal)(order.TotalOutcome / (order.EndDate.Subtract(order.StarDate).TotalDays + 1));
 
             order.FinalNumber = (int)(order.AverageSalesPerDay * (decimal)(order.EndDate - order.StarDate).TotalDays);
 
