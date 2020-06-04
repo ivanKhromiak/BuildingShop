@@ -1,6 +1,6 @@
 ﻿@model BuildingShop.Domain.DomainObjects.ShopCartItem
 
-<div>
+<div class="container">
     <dl class="row">
         <dt class="col-sm-2">
             Назва
@@ -43,12 +43,12 @@
 
 <form asp-controller="ShopCart" asp-action="AddToCart">
     <input type="hidden" value="@Model.Product.Id" name="ProductId" />
-    <div class="form-group">
-        <label asp-for="Amount"></label>
+    <div class="form-group col-md-4">
+        <label>Кількість</label>
         <input asp-for="Amount" class="form-control" />
         <span asp-validation-for="Amount" class="text-danger"></span>
+        <button type="submit" class="btn btn-primary mt-2">Додати в кошик</button>
     </div>
-    <button type="submit" class="btn btn-primary">Додати в кошик</button>
 </form>
 <hr />
 <div>
