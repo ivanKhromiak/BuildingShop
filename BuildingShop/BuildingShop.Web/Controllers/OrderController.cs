@@ -29,16 +29,17 @@ namespace BuildingShop.Web.Controllers
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+            var order = await _orderService.GetOrder(id.Value);
+            if (order == null)
             {
                 return NotFound();
             }
 
             var orderViewModel = new OrderViewModel();
 
-            orderViewModel.Order = await _orderService.GetOrder(id.Value);
-            orderViewModel.Purchases = null;
-            orderViewModel.Deliveries = null;
+            orderViewModel.Order = order;
+            orderViewModel.Purchases = await _orderService.GetPurchases(order);
+            orderViewModel.Deliveries = await _orderService.GetDeliveries(order);
 
             if (orderViewModel.Order == null)
             {
