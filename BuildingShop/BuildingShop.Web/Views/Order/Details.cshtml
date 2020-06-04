@@ -1,86 +1,56 @@
 ﻿@model BuildingShop.Web.Models.OrderViewModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Деталі";
 }
 
-<div>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            Id
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Order.Product.Id)
-        </dd>
-        <dt class="col-sm-2">
-            Назва
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Order.Product.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Order.StarDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Order.StarDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Order.EndDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Order.EndDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Order.StartingAmount)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Order.StartingAmount)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Order.EndAmount)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Order.EndAmount)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Order.TotalIncome)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Order.TotalIncome)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Order.TotalOutcome)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Order.TotalOutcome)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Order.DaysWithoutProduct)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Order.DaysWithoutProduct)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Order.AverageSalesPerDay)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Order.AverageSalesPerDay)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Order.MinSalePerDay)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Order.MinSalePerDay)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Order.FinalNumber)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Order.FinalNumber)
-        </dd>
-    </dl>
-</div>
+    <div>
+        <hr />
+        <table class="table-bordered">
+            <tr>
+                <th rowspan="2">Id товару</th>
+                <th rowspan="2">Найменування</th>
+                <th rowspan="2">Початкова кількість</th>
+                @foreach (var day in Model.Purchases)
+                {
+                    <td colspan="2">04.05.2020</td>
+                }
+                <th rowspan="2">Кінцевий залишок</th>
+                <th rowspan="2">Прихід</th>
+                <th rowspan="2">Розхід</th>
+                <th rowspan="2">Дні без товару</th>
+                <th rowspan="2">Середня кількість продажу за день</th>
+                <th rowspan="2">Період заявки</th>
+                <th rowspan="2">Мінімальний продаж за день</th>
+                <th rowspan="2">Кінцева заявка</th>
+            </tr>
+            <tr>
+                @foreach (var day in Model.Purchases)
+                {
+                    <th>Поставка</th>
+                    <th>Продаж</th>
+                }
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(model => model.Order.Product.Id)</td>
+                <td>@Html.DisplayFor(model => model.Order.Product.Name)</td>
+                <td>@Html.DisplayFor(model => model.Order.StartingAmount)</td>
+                @foreach (var day in Model.Purchases)
+                {
+                    <td>2</td>
+                    <td>3</td>
+                }
+                <td>@(Model.Order.StartingAmount + Model.Order.TotalIncome - Model.Order.TotalOutcome) </td>
+                <td>@Html.DisplayFor(model => model.Order.TotalIncome)</td>
+                <td>@Html.DisplayFor(model => model.Order.TotalOutcome)</td>
+                <td>@Html.DisplayFor(model => model.Order.DaysWithoutProduct)</td>
+                <td>@Html.DisplayFor(model => model.Order.AverageSalesPerDay)</td>
+                <td>@((Model.Order.EndDate - Model.Order.StarDate).Days)</td>
+                <td>@Html.DisplayFor(model => model.Order.MinSalePerDay)</td>
+                <td>@Html.DisplayFor(model => model.Order.FinalNumber)</td>
+            </tr>
+        </table>
+    </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.Order.Id" class="btn btn-dark">Редагувати</a> |
     <a asp-action="Index" class="btn btn-dark">Повернутися до списку</a>
