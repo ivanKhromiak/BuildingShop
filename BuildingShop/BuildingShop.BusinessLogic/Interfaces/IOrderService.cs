@@ -11,6 +11,6 @@ namespace BuildingShop.BusinessLogic.Interfaces
         Task<List<Order>> GetAllOrders();
         Task<Order> GetOrder(int orderId);
         Task<List<Delivery>> GetDeliveries(Order order);
-        Task<List<Delivery>> GetPurchases(Order order);
+        Task<List<Purchase>> GetPurchases(Order order);
     }
 }
