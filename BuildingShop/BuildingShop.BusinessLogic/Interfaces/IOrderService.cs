@@ -10,5 +10,7 @@ namespace BuildingShop.BusinessLogic.Interfaces
         Task DeleteOrder(int orderId);
         Task<List<Order>> GetAllOrders();
         Task<Order> GetOrder(int orderId);
+        Task<List<Delivery>> GetDeliveries(Order order);
+        Task<List<Delivery>> GetPurchases(Order order);
     }
 }
