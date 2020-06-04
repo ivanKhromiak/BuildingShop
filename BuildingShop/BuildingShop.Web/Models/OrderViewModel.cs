@@ -9,7 +9,6 @@ namespace BuildingShop.Web.Models
     public class OrderViewModel
     {
         public Order Order { get; set; }
-        public List<Delivery> Deliveries { get; set; }
-        public List<Purchase> Purchases { get; set; }
+        public Dictionary<string, int[]> DateInfo { get; set; }
     }
 }
