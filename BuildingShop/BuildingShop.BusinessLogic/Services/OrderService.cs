@@ -68,8 +68,8 @@ namespace BuildingShop.BusinessLogic.Services
 
             order.FinalNumber = (int)(order.AverageSalesPerDay * (decimal)(order.EndDate - order.StarDate).TotalDays);
 
-           await _context.Orders.AddAsync(order);
-           await _context.SaveChangesAsync();
+            await _context.Orders.AddAsync(order);
+            await _context.SaveChangesAsync();
         }
 
         public async Task EditOrder(Order order)
@@ -102,7 +102,7 @@ namespace BuildingShop.BusinessLogic.Services
                     currentDate.ToShortDateString(),
                     new string[] {
                         deliveries.FirstOrDefault(p => p.Date == currentDate)?.Amount.ToString() ?? "-",
-                        purchases.FirstOrDefault(p => p.Date == currentDate)?.Amount.ToString() ?? "-"                      
+                        purchases.FirstOrDefault(p => p.Date == currentDate)?.Amount.ToString() ?? "-"
                     }
                 );
                 currentDate = currentDate.AddDays(1);

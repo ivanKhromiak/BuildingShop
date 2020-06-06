@@ -35,7 +35,7 @@ namespace BuildingShop.BusinessLogic.Services
             {
                 int totalAmount = product.Sum(p => p.Amount);
                 var item = _context.Products.Find(product.Key);
-                if(item.Amount < totalAmount)
+                if (item.Amount < totalAmount)
                 {
                     throw new ArgumentException("No such amount of product for purchase");
                 }

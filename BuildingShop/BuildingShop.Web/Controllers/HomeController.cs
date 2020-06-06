@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BuildingShop.BusinessLogic.Interfaces;
+using BuildingShop.Domain.DomainObjects;
+using BuildingShop.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using BuildingShop.Web.Models;
-using BuildingShop.BusinessLogic.Interfaces;
-using BuildingShop.Domain.DomainObjects;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace BuildingShop.Web.Controllers
 {

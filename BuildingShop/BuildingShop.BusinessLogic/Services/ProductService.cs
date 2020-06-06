@@ -2,10 +2,8 @@
 using BuildingShop.Domain.DomainObjects;
 using BuildingShop.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BuildingShop.BusinessLogic.Services

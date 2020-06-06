@@ -1,15 +1,15 @@
+using BuildingShop.BusinessLogic.Interfaces;
+using BuildingShop.BusinessLogic.Services;
+using BuildingShop.Domain;
+using BuildingShop.Persistence;
+using BuildingShop.Persistence.Identity;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using BuildingShop.Domain;
-using BuildingShop.Persistence.Identity;
-using BuildingShop.Persistence;
-using BuildingShop.BusinessLogic.Interfaces;
-using BuildingShop.BusinessLogic.Services;
 using System;
 
 namespace BuildingShop.Web
@@ -31,7 +31,7 @@ namespace BuildingShop.Web
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(20);
                 options.Cookie.IsEssential = true;
-            }); 
+            });
 
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IShopCartService, ShopCartService>();

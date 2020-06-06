@@ -1,9 +1,9 @@
-﻿using BuildingShop.Domain.DomainObjects;
+﻿using BuildingShop.Domain;
+using BuildingShop.Domain.DomainObjects;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Identity;
-using BuildingShop.Domain;
 
 namespace BuildingShop.Persistence.Extensions
 {
@@ -12,30 +12,32 @@ namespace BuildingShop.Persistence.Extensions
         public static void SeedData(this ModelBuilder builder)
         {
             builder.Entity<Category>().HasData(
-                new Category() { Id = 1, Name = "Ручні інструменти"},
+                new Category() { Id = 1, Name = "Ручні інструменти" },
                 new Category() { Id = 2, Name = "Електротовари" },
-                new Category() { Id = 3, Name = "Ліхтарі"}
+                new Category() { Id = 3, Name = "Ліхтарі" }
                 );
 
             builder.Entity<Product>().HasData(
-                new Product() { 
-                    Id = 1, 
-                    Name = "Молоток", 
-                    Amount = 20, 
-                    CategoryId = 1, 
+                new Product()
+                {
+                    Id = 1,
+                    Name = "Молоток",
+                    Amount = 20,
+                    CategoryId = 1,
                     Price = 50m,
-                    Сharacteristics = new Dictionary<string, string>() 
+                    Сharacteristics = new Dictionary<string, string>()
                     {
                         ["Вага"] = "50 грам",
                         ["Матеріал"] = "Метал",
                         ["Призначення"] = "Слюсарний"
                     }
                 },
-                new Product() { 
-                    Id = 2, 
-                    Name = "Діодна лампа", 
-                    Amount = 40, 
-                    CategoryId = 2, 
+                new Product()
+                {
+                    Id = 2,
+                    Name = "Діодна лампа",
+                    Amount = 40,
+                    CategoryId = 2,
                     Price = 25.99m,
                     Сharacteristics = new Dictionary<string, string>()
                     {
@@ -72,7 +74,7 @@ namespace BuildingShop.Persistence.Extensions
             );
 
             builder.Entity<Delivery>().HasData(
-                new Delivery() { Id = 100, ProductId = 3, Date = new DateTime(2020, 5, 9), Amount = 30}
+                new Delivery() { Id = 100, ProductId = 3, Date = new DateTime(2020, 5, 9), Amount = 30 }
             );
 
             builder.Entity<Purchase>().HasData(

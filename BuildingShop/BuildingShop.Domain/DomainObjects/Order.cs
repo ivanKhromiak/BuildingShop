@@ -19,6 +19,6 @@ namespace BuildingShop.Domain.DomainObjects
         public int DaysWithoutProduct { get; set; }
         public decimal AverageSalesPerDay { get; set; }
         public int MinSalePerDay { get; set; }
-        public int FinalNumber { get; set; } 
+        public int FinalNumber { get; set; }
     }
 }

@@ -1,12 +1,11 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+﻿using BuildingShop.BusinessLogic.Interfaces;
 using BuildingShop.Domain.DomainObjects;
 using BuildingShop.Persistence;
-using BuildingShop.BusinessLogic.Interfaces;
 using BuildingShop.Web.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BuildingShop.Web.Controllers
 {
@@ -35,7 +34,7 @@ namespace BuildingShop.Web.Controllers
                 return NotFound();
             }
 
-            var orderViewModel = new OrderViewModel() 
+            var orderViewModel = new OrderViewModel()
             {
                 Order = order,
                 DateInfo = await _orderService.GetDateInfo(order)

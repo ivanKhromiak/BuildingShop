@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace BuildingShop.Domain.DomainObjects
+﻿namespace BuildingShop.Domain.DomainObjects
 {
     public class ShopCartItem : BaseEntity
     {

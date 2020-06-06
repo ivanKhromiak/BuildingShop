@@ -1,9 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-using BuildingShop.BusinessLogic.Interfaces;
+﻿using BuildingShop.BusinessLogic.Interfaces;
 using BuildingShop.Domain.DomainObjects;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace BuildingShop.Web.Controllers
 {
