@@ -42,12 +42,22 @@ namespace BuildingShop.BusinessLogic.Services
                 item.Amount -= totalAmount;
                 _context.SaveChanges();
 
-                var amountChange = new ProductAmountTracker()
+                var amountChange = _context.ProductAmountTrackers
+                    .FirstOrDefault(p => p.Date.ToShortDateString() == DateTime.Now.ToShortDateString());
+                if(amountChange == null)
                 {
-                    ProductId = product.Key,
-                    Amount = _context.Products.Find(product.Key).Amount,
-                    Date = DateTime.Now
-                };
+                    amountChange = new ProductAmountTracker()
+                    {
+                        ProductId = product.Key,
+                        Amount = _context.Products.Find(product.Key).Amount,
+                        Date = DateTime.Now
+                    };
+                }
+                else
+                {
+                    amountChange.Amount -= totalAmount;
+                }
+
                 _context.Add(amountChange);
                 _context.SaveChanges();
 
