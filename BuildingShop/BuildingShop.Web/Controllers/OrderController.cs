@@ -50,7 +50,7 @@ namespace BuildingShop.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("ProductId,StarDate,EndDate")] Order order)
+        public async Task<IActionResult> Create([Bind("ProductId,StartDate,EndDate")] Order order)
         {
             if (ModelState.IsValid)
             {
