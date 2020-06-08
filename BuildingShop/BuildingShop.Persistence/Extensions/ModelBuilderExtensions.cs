@@ -297,15 +297,15 @@ namespace BuildingShop.Persistence.Extensions
                 new ProductAmountTracker() { Id = 5, ProductId = 3, Date = new DateTime(2020, 5, 6), Amount = 0 },
                 new ProductAmountTracker() { Id = 6, ProductId = 3, Date = new DateTime(2020, 5, 9), Amount = 50 },
                 new ProductAmountTracker() { Id = 7, ProductId = 3, Date = new DateTime(2020, 5, 10), Amount = 38 },
-                new ProductAmountTracker() { Id = 7, ProductId = 3, Date = new DateTime(2020, 5, 11), Amount = 23 },
-                new ProductAmountTracker() { Id = 7, ProductId = 3, Date = new DateTime(2020, 5, 12), Amount = 9 },
-                new ProductAmountTracker() { Id = 7, ProductId = 3, Date = new DateTime(2020, 5, 14), Amount = 60 },
-                new ProductAmountTracker() { Id = 7, ProductId = 3, Date = new DateTime(2020, 5, 17), Amount = 35 }
+                new ProductAmountTracker() { Id = 8, ProductId = 3, Date = new DateTime(2020, 5, 11), Amount = 23 },
+                new ProductAmountTracker() { Id = 9, ProductId = 3, Date = new DateTime(2020, 5, 12), Amount = 9 },
+                new ProductAmountTracker() { Id = 10, ProductId = 3, Date = new DateTime(2020, 5, 14), Amount = 60 },
+                new ProductAmountTracker() { Id = 11, ProductId = 3, Date = new DateTime(2020, 5, 17), Amount = 35 }
             );
 
             builder.Entity<Delivery>().HasData(
                 new Delivery() { Id = 100, ProductId = 3, Date = new DateTime(2020, 5, 9), Amount = 50 },
-                new Delivery() { Id = 100, ProductId = 3, Date = new DateTime(2020, 5, 14), Amount = 60 }
+                new Delivery() { Id = 101, ProductId = 3, Date = new DateTime(2020, 5, 14), Amount = 60 }
             );
 
             builder.Entity<Purchase>().HasData(
@@ -313,10 +313,10 @@ namespace BuildingShop.Persistence.Extensions
                 new Purchase() { Id = 101, ProductId = 3, Date = new DateTime(2020, 5, 5), Amount = 16 },
                 new Purchase() { Id = 102, ProductId = 3, Date = new DateTime(2020, 5, 6), Amount = 14 },
                 new Purchase() { Id = 103, ProductId = 3, Date = new DateTime(2020, 5, 10), Amount = 12 },
-                new Purchase() { Id = 103, ProductId = 3, Date = new DateTime(2020, 5, 11), Amount = 15 },
-                new Purchase() { Id = 103, ProductId = 3, Date = new DateTime(2020, 5, 12), Amount = 14 },
-                new Purchase() { Id = 103, ProductId = 3, Date = new DateTime(2020, 5, 14), Amount = 9 },
-                new Purchase() { Id = 103, ProductId = 3, Date = new DateTime(2020, 5, 17), Amount = 25 }
+                new Purchase() { Id = 104, ProductId = 3, Date = new DateTime(2020, 5, 11), Amount = 15 },
+                new Purchase() { Id = 105, ProductId = 3, Date = new DateTime(2020, 5, 12), Amount = 14 },
+                new Purchase() { Id = 106, ProductId = 3, Date = new DateTime(2020, 5, 14), Amount = 9 },
+                new Purchase() { Id = 107, ProductId = 3, Date = new DateTime(2020, 5, 17), Amount = 25 }
             );
         }
 
