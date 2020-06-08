@@ -290,24 +290,33 @@ namespace BuildingShop.Persistence.Extensions
             );
 
             builder.Entity<ProductAmountTracker>().HasData(
-                new ProductAmountTracker() { Id = 1, ProductId = 3, Date = new DateTime(2020, 5, 1), Amount = 25 },
-                new ProductAmountTracker() { Id = 2, ProductId = 3, Date = new DateTime(2020, 5, 3), Amount = 15 },
-                new ProductAmountTracker() { Id = 3, ProductId = 3, Date = new DateTime(2020, 5, 4), Amount = 9 },
-                new ProductAmountTracker() { Id = 4, ProductId = 3, Date = new DateTime(2020, 5, 5), Amount = 5 },
+                new ProductAmountTracker() { Id = 1, ProductId = 3, Date = new DateTime(2020, 5, 1), Amount = 60 },
+                new ProductAmountTracker() { Id = 2, ProductId = 3, Date = new DateTime(2020, 5, 3), Amount = 50 },
+                new ProductAmountTracker() { Id = 3, ProductId = 3, Date = new DateTime(2020, 5, 4), Amount = 30 },
+                new ProductAmountTracker() { Id = 4, ProductId = 3, Date = new DateTime(2020, 5, 5), Amount = 14 },
                 new ProductAmountTracker() { Id = 5, ProductId = 3, Date = new DateTime(2020, 5, 6), Amount = 0 },
-                new ProductAmountTracker() { Id = 6, ProductId = 3, Date = new DateTime(2020, 5, 9), Amount = 30 },
-                new ProductAmountTracker() { Id = 7, ProductId = 3, Date = new DateTime(2020, 5, 10), Amount = 28 }
+                new ProductAmountTracker() { Id = 6, ProductId = 3, Date = new DateTime(2020, 5, 9), Amount = 50 },
+                new ProductAmountTracker() { Id = 7, ProductId = 3, Date = new DateTime(2020, 5, 10), Amount = 38 },
+                new ProductAmountTracker() { Id = 7, ProductId = 3, Date = new DateTime(2020, 5, 11), Amount = 23 },
+                new ProductAmountTracker() { Id = 7, ProductId = 3, Date = new DateTime(2020, 5, 12), Amount = 9 },
+                new ProductAmountTracker() { Id = 7, ProductId = 3, Date = new DateTime(2020, 5, 14), Amount = 60 },
+                new ProductAmountTracker() { Id = 7, ProductId = 3, Date = new DateTime(2020, 5, 17), Amount = 35 }
             );
 
             builder.Entity<Delivery>().HasData(
-                new Delivery() { Id = 100, ProductId = 3, Date = new DateTime(2020, 5, 9), Amount = 30 }
+                new Delivery() { Id = 100, ProductId = 3, Date = new DateTime(2020, 5, 9), Amount = 50 },
+                new Delivery() { Id = 100, ProductId = 3, Date = new DateTime(2020, 5, 14), Amount = 60 }
             );
 
             builder.Entity<Purchase>().HasData(
-                new Purchase() { Id = 100, ProductId = 3, Date = new DateTime(2020, 5, 4), Amount = 6 },
-                new Purchase() { Id = 101, ProductId = 3, Date = new DateTime(2020, 5, 5), Amount = 4 },
-                new Purchase() { Id = 102, ProductId = 3, Date = new DateTime(2020, 5, 6), Amount = 5 },
-                new Purchase() { Id = 103, ProductId = 3, Date = new DateTime(2020, 5, 10), Amount = 2 }
+                new Purchase() { Id = 100, ProductId = 3, Date = new DateTime(2020, 5, 4), Amount = 20 },
+                new Purchase() { Id = 101, ProductId = 3, Date = new DateTime(2020, 5, 5), Amount = 16 },
+                new Purchase() { Id = 102, ProductId = 3, Date = new DateTime(2020, 5, 6), Amount = 14 },
+                new Purchase() { Id = 103, ProductId = 3, Date = new DateTime(2020, 5, 10), Amount = 12 },
+                new Purchase() { Id = 103, ProductId = 3, Date = new DateTime(2020, 5, 11), Amount = 15 },
+                new Purchase() { Id = 103, ProductId = 3, Date = new DateTime(2020, 5, 12), Amount = 14 },
+                new Purchase() { Id = 103, ProductId = 3, Date = new DateTime(2020, 5, 14), Amount = 9 },
+                new Purchase() { Id = 103, ProductId = 3, Date = new DateTime(2020, 5, 17), Amount = 25 }
             );
         }
 
