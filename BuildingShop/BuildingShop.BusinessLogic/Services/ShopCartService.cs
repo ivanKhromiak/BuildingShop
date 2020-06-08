@@ -43,6 +43,8 @@ namespace BuildingShop.BusinessLogic.Services
                 _context.SaveChanges();
 
                 var amountChange = _context.ProductAmountTrackers
+                    .Where(a => a.ProductId == item.Id)
+                    .ToList()
                     .FirstOrDefault(p => p.Date.ToShortDateString() == DateTime.Now.ToShortDateString());
                 if(amountChange == null)
                 {
