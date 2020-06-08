@@ -31,24 +31,24 @@ namespace BuildingShop.BusinessLogic.Services
         public async Task CreateOrder(Order order)
         {
             var Deliveries = await _context.Deliveries
-                .Where(d => d.Date <= order.EndDate && d.Date >= order.StarDate && d.ProductId == order.ProductId)
+                .Where(d => d.Date <= order.EndDate && d.Date >= order.StartDate && d.ProductId == order.ProductId)
                 .ToListAsync();
             var Purchases = await _context.Purchases
-                .Where(d => d.Date <= order.EndDate && d.Date >= order.StarDate && d.ProductId == order.ProductId)
+                .Where(d => d.Date <= order.EndDate && d.Date >= order.StartDate && d.ProductId == order.ProductId)
                 .ToListAsync();
 
             order.TotalIncome = Deliveries.Sum(d => d.Amount);
             order.TotalOutcome = Purchases.Sum(d => d.Amount);
 
             order.StartingAmount = (await _context.ProductAmountTrackers
-                .Where(a => order.StarDate > a.Date)
+                .Where(a => order.StartDate > a.Date)
                 .OrderBy(a => a.Date)
                 .ToListAsync())
                 .LastOrDefault()
                 .Amount;
             order.EndAmount = order.StartingAmount + order.TotalIncome - order.TotalOutcome;
 
-            var currentDate = order.StarDate;
+            var currentDate = order.StartDate;
             int currentAmount = order.StartingAmount;
 
             while (currentDate <= order.EndDate)
@@ -64,9 +64,9 @@ namespace BuildingShop.BusinessLogic.Services
 
             order.MinSalePerDay = Purchases.Min(p => p.Amount);
 
-            order.AverageSalesPerDay = (decimal)(order.TotalOutcome / (order.EndDate.Subtract(order.StarDate).TotalDays + 1));
+            order.AverageSalesPerDay = (decimal)(order.TotalOutcome / (order.EndDate.Subtract(order.StartDate).TotalDays + 1));
 
-            order.FinalNumber = (int)(order.AverageSalesPerDay * (decimal)(order.EndDate - order.StarDate).TotalDays);
+            order.FinalNumber = (int)(order.AverageSalesPerDay * (decimal)(order.EndDate - order.StartDate).TotalDays);
 
             await _context.Orders.AddAsync(order);
             await _context.SaveChangesAsync();
@@ -88,13 +88,13 @@ namespace BuildingShop.BusinessLogic.Services
         public async Task<Dictionary<string, string[]>> GetDateInfo(Order order)
         {
             var purchases = await _context.Purchases
-                .Where(d => d.Date <= order.EndDate && d.Date >= order.StarDate && d.ProductId == order.ProductId)
+                .Where(d => d.Date <= order.EndDate && d.Date >= order.StartDate && d.ProductId == order.ProductId)
                 .ToListAsync();
             var deliveries = await _context.Deliveries
-                .Where(d => d.Date <= order.EndDate && d.Date >= order.StarDate && d.ProductId == order.ProductId)
+                .Where(d => d.Date <= order.EndDate && d.Date >= order.StartDate && d.ProductId == order.ProductId)
                 .ToListAsync();
 
-            var currentDate = order.StarDate;
+            var currentDate = order.StartDate;
             var dateInfo = new Dictionary<string, string[]>();
             while (currentDate <= order.EndDate)
             {
