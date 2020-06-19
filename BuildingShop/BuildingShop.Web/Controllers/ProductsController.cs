@@ -13,11 +13,11 @@ namespace BuildingShop.Web.Controllers
             _productService = productService;
         }
 
-        //public async Task<IActionResult> Index()
-        //{
-        //    var applicationDbContext = _context.Products.Include(p => p.Category);
-        //    return View(await applicationDbContext.ToListAsync());
-        //}
+        public async Task<IActionResult> Index()
+        {
+            var applicationDbContext = _productService.GetAllProducts();
+            return View(applicationDbContext);
+        }
 
         public async Task<IActionResult> Details(int? id)
         {
