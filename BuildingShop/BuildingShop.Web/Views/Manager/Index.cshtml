@@ -2,11 +2,14 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="btn-group-vertical">
-    <div class="mb-2">
-        <a class="btn btn-dark" asp-action="Create" asp-controller="Order">Сформувати нову заявку</a>
+    <div class="btn-group-vertical">
+        <div class="mb-2">
+            <a class="btn btn-dark" asp-action="Create" asp-controller="Order">Сформувати нову заявку</a>
+        </div>
+        <div class="mb-2">
+            <a class="btn btn-dark" asp-action="Index" asp-controller="Order">Переглянути заявки</a>
+        </div>
+        <div class="mb-2">
+            <a class="btn btn-dark" asp-action="Index" asp-controller="Products">Список товарів</a>
+        </div>
     </div>
-    <div class="mb-2">
-        <a class="btn btn-dark" asp-action="Index" asp-controller="Order">Переглянути заявки</a>
-    </div>
-</div>
