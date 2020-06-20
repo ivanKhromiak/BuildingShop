@@ -2,6 +2,7 @@
 using BuildingShop.Domain.DomainObjects;
 using BuildingShop.Persistence;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,6 +37,12 @@ namespace BuildingShop.BusinessLogic.Services
         {
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
+            await _context.ProductAmountTrackers.AddAsync(new ProductAmountTracker()
+            {
+                Product = product,
+                Amount = product.Amount,
+                Date = DateTime.Now
+            });
         }
     }
 }
