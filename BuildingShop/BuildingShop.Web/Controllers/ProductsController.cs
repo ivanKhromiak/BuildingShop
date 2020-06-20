@@ -1,5 +1,6 @@
 ﻿using BuildingShop.BusinessLogic.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
 
 namespace BuildingShop.Web.Controllers
@@ -36,14 +37,13 @@ namespace BuildingShop.Web.Controllers
             return View(product);
         }
 
-        //public IActionResult Create()
-        //{
-        //    ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
-        //    return View();
-        //}
+        public IActionResult Create(int amount = 1)
+        {
+            //ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
+            ViewData["СharacteristicsAmount"] = amount;
+            return View();
+        }
 
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        //// more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         //public async Task<IActionResult> Create([Bind("Name,Image,Price,Amount,CategoryId,Сharacteristics,Id")] Product product)
