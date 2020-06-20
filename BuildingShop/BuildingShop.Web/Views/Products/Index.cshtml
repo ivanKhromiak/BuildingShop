@@ -1,28 +1,25 @@
 ﻿@model IEnumerable<BuildingShop.Domain.DomainObjects.Product>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-success" asp-action="Create">Додати новий</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Ім'я
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Image)
+                Зображення
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                Ціна
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Amount)
+                Кількість
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Сharacteristics)
+                Категорія
             </th>
             <th></th>
         </tr>
@@ -34,7 +31,7 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Image)
+                <img class="img-responsive mx-auto" width="100" src="@item.Image">
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
@@ -43,15 +40,13 @@
                 @Html.DisplayFor(modelItem => item.Amount)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Category.Id)
+                @Html.DisplayFor(modelItem => item.Category.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Сharacteristics)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a class="btn btn-warning" Edit" asp-route-id="@item.Id">Редагувати</a>
+                <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.Id">Деталі</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Видалити</a>
+                <a class="btn btn-dark" asp-action="ChangeAmount" asp-route-id="@item.Id">Зробити прихід товару</a>
             </td>
         </tr>
 }
