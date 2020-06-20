@@ -37,9 +37,9 @@ namespace BuildingShop.Web.Controllers
             return View(product);
         }
 
-        public IActionResult Create(int сharacteristicsAmount = 1)
+        public async Task<IActionResult> Create(int сharacteristicsAmount = 1)
         {
-            //ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
+            ViewData["CategoryId"] = new SelectList(await _productService.GetProductsCategories(), "Id", "Name");
             ViewData["СharacteristicsAmount"] = сharacteristicsAmount;
             return View();
         }

@@ -22,6 +22,11 @@ namespace BuildingShop.BusinessLogic.Services
             return _context.Products.Include(p => p.Category).ToList();
         }
 
+        public async Task<List<Category>> GetProductsCategories()
+        {
+            return await _context.Categories.ToListAsync();
+        }
+
         public async Task<Product> GetProduct(int id)
         {
             return await _context.Products.Include(p => p.Category).Where(p => p.Id == id).FirstOrDefaultAsync();
