@@ -37,10 +37,10 @@ namespace BuildingShop.Web.Controllers
             return View(product);
         }
 
-        public IActionResult Create(int amount = 1)
+        public IActionResult Create(int сharacteristicsAmount = 1)
         {
             //ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Name");
-            ViewData["СharacteristicsAmount"] = amount;
+            ViewData["СharacteristicsAmount"] = сharacteristicsAmount;
             return View();
         }
 
