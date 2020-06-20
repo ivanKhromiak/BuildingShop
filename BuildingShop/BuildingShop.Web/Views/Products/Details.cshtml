@@ -50,7 +50,7 @@
     </dl>
 </div>
 <div>
-    <a class="btn btn-dark" asp-action="Edit" asp-route-product="model.Id">Змінити</a> 
-    <a class="btn btn-dark" asp-action="Delete" asp-route-product="model.Id">Видалити</a> 
+    <a class="btn btn-dark" asp-action="Edit" asp-route-id="@Model.Id">Змінити</a> 
+    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.Id">Видалити</a>
     <a class="btn btn-dark" asp-action="Index">Повернутися</a>
 </div>
