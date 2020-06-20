@@ -31,5 +31,11 @@ namespace BuildingShop.BusinessLogic.Services
         {
             return await _context.Products.Include(p => p.Category).Where(p => p.Id == id).FirstOrDefaultAsync();
         }
+
+        public async Task AddProduct(Product product)
+        {
+            await _context.Products.AddAsync(product);
+            await _context.SaveChangesAsync();
+        }
     }
 }

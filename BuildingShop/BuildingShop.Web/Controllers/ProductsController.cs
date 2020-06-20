@@ -1,4 +1,5 @@
 ﻿using BuildingShop.BusinessLogic.Interfaces;
+using BuildingShop.Domain.DomainObjects;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
@@ -44,19 +45,19 @@ namespace BuildingShop.Web.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("Name,Image,Price,Amount,CategoryId,Сharacteristics,Id")] Product product)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(product);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
-        //    return View(product);
-        //}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Name,Image,Price,Amount,CategoryId,Сharacteristics")] Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                await _productService.AddProduct(product);
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["CategoryId"] = new SelectList(await _productService.GetProductsCategories(), "Id", 
+                "Name", product.CategoryId);
+            return View(product);
+        }
 
         //public async Task<IActionResult> Edit(int? id)
         //{
