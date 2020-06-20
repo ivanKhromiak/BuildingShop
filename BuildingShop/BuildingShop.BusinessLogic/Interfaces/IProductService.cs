@@ -7,6 +7,7 @@ namespace BuildingShop.BusinessLogic.Interfaces
     public interface IProductService
     {
         Task AddProduct(Product product);
+        Task DeleteProduct(int id);
         List<Product> GetAllProducts();
         Task<Product> GetProduct(int id);
         Task<List<Category>> GetProductsCategories();

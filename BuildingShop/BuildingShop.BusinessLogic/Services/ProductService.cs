@@ -45,5 +45,12 @@ namespace BuildingShop.BusinessLogic.Services
             });
             await _context.SaveChangesAsync();
         }
+
+        public async Task DeleteProduct(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+        }
     }
 }
