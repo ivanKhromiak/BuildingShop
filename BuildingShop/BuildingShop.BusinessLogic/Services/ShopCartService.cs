@@ -54,13 +54,13 @@ namespace BuildingShop.BusinessLogic.Services
                         Amount = _context.Products.Find(product.Key).Amount,
                         Date = DateTime.Now
                     };
+                    _context.Add(amountChange);
                 }
                 else
                 {
                     amountChange.Amount -= totalAmount;
                 }
-
-                _context.Add(amountChange);
+           
                 _context.SaveChanges();
 
                 var purchase = new Purchase() { ProductId = product.Key, Amount = totalAmount, Date = DateTime.Now };
