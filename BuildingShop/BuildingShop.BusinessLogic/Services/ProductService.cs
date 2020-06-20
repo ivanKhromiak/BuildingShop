@@ -39,10 +39,11 @@ namespace BuildingShop.BusinessLogic.Services
             await _context.SaveChangesAsync();
             await _context.ProductAmountTrackers.AddAsync(new ProductAmountTracker()
             {
-                Product = product,
+                ProductId = product.Id,
                 Amount = product.Amount,
                 Date = DateTime.Now
             });
+            await _context.SaveChangesAsync();
         }
     }
 }

@@ -34,9 +34,9 @@
                 @for (int i = 0; i < (int)ViewData["СharacteristicsAmount"]; i++)
                 {
                     <label class="control-label">Назва характеристики</label>
-                    <input type="text" name="stocks[i].Key" class="form-control" />
+                    <input type="text" name="Сharacteristics[@i].Key" class="form-control" />
                     <label class="control-label">Значення характеристики</label>
-                    <input type="text" name="stocks[i].Value" class="form-control" />
+                    <input type="text" name="Сharacteristics[@i].Value" class="form-control" />
                 }
             </div>
             <div class="mb-2">
