@@ -27,6 +27,7 @@
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <p>Якщо хочете видалити характеристику то очистіть поле значення або назви характеристики</p>
                 @foreach (var item in Model.Сharacteristics)
                 {
                     <label class="control-label">Назва характеристики</label>

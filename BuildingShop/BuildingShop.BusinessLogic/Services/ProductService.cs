@@ -48,6 +48,13 @@ namespace BuildingShop.BusinessLogic.Services
 
         public async Task EditProduct(Product product)
         {
+            foreach (var item in product.Сharacteristics)
+            {
+                if (item.Key.Contains("") || item.Value.Contains(""))
+                {
+                    product.Сharacteristics.Remove(item.Key);
+                }
+            }
             _context.Update(product);
             await _context.SaveChangesAsync();
         }
