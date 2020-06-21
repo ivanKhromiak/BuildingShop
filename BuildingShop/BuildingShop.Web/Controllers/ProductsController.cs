@@ -59,28 +59,26 @@ namespace BuildingShop.Web.Controllers
             return View(product);
         }
 
-        //public async Task<IActionResult> Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //    var product = await _context.Products.FindAsync(id);
-        //    if (product == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
-        //    return View(product);
-        //}
+            var product = await _productService.GetProduct(id.Value);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            ViewData["CategoryId"] = new SelectList(await _productService.GetProductsCategories(), "Id",
+                "Name", product.CategoryId);
+            return View(product);
+        }
 
-        //// POST: Products/Edit/5
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        //// more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         //[HttpPost]
         //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int id, [Bind("Name,Image,Price,Amount,CategoryId,Сharacteristics,Id")] Product product)
+        //public async Task<IActionResult> Edit(int id, [Bind("Name,Image,Price,Amount,CategoryId,Сharacteristics")] Product product)
         //{
         //    if (id != product.Id)
         //    {
@@ -134,10 +132,5 @@ namespace BuildingShop.Web.Controllers
             await _productService.DeleteProduct(id);
             return RedirectToAction(nameof(Index));
         }
-
-        //private bool ProductExists(int id)
-        //{
-        //    return _context.Products.Any(e => e.Id == id);
-        //}
     }
 }
