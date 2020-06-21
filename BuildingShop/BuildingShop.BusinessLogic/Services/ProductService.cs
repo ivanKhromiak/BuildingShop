@@ -37,7 +37,7 @@ namespace BuildingShop.BusinessLogic.Services
         {
             foreach (var item in product.Сharacteristics)
             {
-                if (item.Key.Contains("") || item.Value.Contains(""))
+                if (item.Key == "" || item.Value == "")
                 {
                     product.Сharacteristics.Remove(item.Key);
                 }
@@ -57,7 +57,7 @@ namespace BuildingShop.BusinessLogic.Services
         {
             foreach (var item in product.Сharacteristics)
             {
-                if (item.Key.Contains("") || item.Value.Contains(""))
+                if (item.Key == "" || item.Value == "")
                 {
                     product.Сharacteristics.Remove(item.Key);
                 }
