@@ -46,6 +46,12 @@ namespace BuildingShop.BusinessLogic.Services
             await _context.SaveChangesAsync();
         }
 
+        public async Task EditProduct(Product product)
+        {
+            _context.Update(product);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task DeleteProduct(int id)
         {
             var product = await _context.Products.FindAsync(id);

@@ -34,7 +34,7 @@
                     <label class="control-label">Значення характеристики</label>
                     <input type="text" name="@item.Value" value="@item.Value" class="form-control" />
                 }
-                @for (int i = 0; i < Model.Сharacteristics.Count + (int)ViewData["СharacteristicsAmount"]; i++)
+                @for (int i = Model.Сharacteristics.Count; i < Model.Сharacteristics.Count + (int)ViewData["СharacteristicsAmount"]; i++)
                 {
                     <label class="control-label">Назва характеристики</label>
                     <input type="text" name="Сharacteristics[@i].Key" class="form-control" />
@@ -43,11 +43,11 @@
                 }
             </div>
             <div class="mb-2">
-                <a asp-action="Create" asp-route-сharacteristicsAmount="@((int)ViewData["СharacteristicsAmount"] + 1)"
+                <a asp-action="Edit" asp-route-сharacteristicsAmount="@((int)ViewData["СharacteristicsAmount"] + 1)"
                    class="btn btn-dark mb-1">
                     Додати поле для характеристики
                 </a>
-                <a asp-action="Create" asp-route-сharacteristicsAmount="@((int)ViewData["СharacteristicsAmount"] - 1)"
+                <a asp-action="Edit" asp-route-сharacteristicsAmount="@((int)ViewData["СharacteristicsAmount"] - 1)"
                    class="btn btn-dark mb-1">
                     Видалити поле для  характеристики
                 </a>

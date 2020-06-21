@@ -59,7 +59,7 @@ namespace BuildingShop.Web.Controllers
             return View(product);
         }
 
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, int сharacteristicsAmount = 0)
         {
             if (id == null)
             {
@@ -71,43 +71,31 @@ namespace BuildingShop.Web.Controllers
             {
                 return NotFound();
             }
+            ViewData["СharacteristicsAmount"] = сharacteristicsAmount;
             ViewData["CategoryId"] = new SelectList(await _productService.GetProductsCategories(), "Id",
                 "Name", product.CategoryId);
             return View(product);
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int id, [Bind("Name,Image,Price,Amount,CategoryId,Сharacteristics")] Product product)
-        //{
-        //    if (id != product.Id)
-        //    {
-        //        return NotFound();
-        //    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Name,Image,Price,Amount,CategoryId,Сharacteristics")] Product product)
+        {
+            if (id != product.Id)
+            {
+                return NotFound();
+            }
 
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            _context.Update(product);
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!ProductExists(product.Id))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", product.CategoryId);
-        //    return View(product);
-        //}
+            if (ModelState.IsValid)
+            {
+                await _productService.EditProduct(product);
+                return RedirectToAction(nameof(Index));
+            }
+
+            ViewData["CategoryId"] = new SelectList(await _productService.GetProductsCategories(), "Id",
+                "Name", product.CategoryId);
+            return View(product);
+        }
 
         public async Task<IActionResult> Delete(int? id)
         {

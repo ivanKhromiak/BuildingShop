@@ -8,6 +8,7 @@ namespace BuildingShop.BusinessLogic.Interfaces
     {
         Task AddProduct(Product product);
         Task DeleteProduct(int id);
+        Task EditProduct(Product product);
         List<Product> GetAllProducts();
         Task<Product> GetProduct(int id);
         Task<List<Category>> GetProductsCategories();
