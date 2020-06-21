@@ -35,6 +35,13 @@ namespace BuildingShop.BusinessLogic.Services
 
         public async Task AddProduct(Product product)
         {
+            foreach (var item in product.Сharacteristics)
+            {
+                if (item.Key.Contains("") || item.Value.Contains(""))
+                {
+                    product.Сharacteristics.Remove(item.Key);
+                }
+            }
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
             await _context.ProductAmountTrackers.AddAsync(new ProductAmountTracker()
