@@ -5,18 +5,20 @@
     <h1 class="display-4">Всі товари</h1>
 </div>
 
-<div class="align-content-center">
-    <div class="row justify-content-md-center mt-5 mb-2">
+<div class="container">
+    <div class="row">
         @{
             foreach (var product in Model)
             {
-                <div class="p-2 mr-2 mb-2 col-3 d-flex flex-column border">
-                    <h4 class="text-center">@product.Name</h4>
-                    <img class="img-responsive mx-auto" width="150" height="150" src="@product.Image">
-                    <p class="text-center">Ціна: @product.Price</p>
-                    <p class="text-center">Наявна кількість: @product.Amount</p>
-                    <p class="text-center">Категорія: @product.Category.Name</p>
-                    <a class="btn btn-dark" asp-action="Details" asp-route-id="@product.Id">Детальніше</a>
+                <div class="col-lg-3">
+                    <div class="item">
+                        <h4>@product.Name</h4>
+                        <img class="img-responsive" width="150" height="150" src="@product.Image">
+                        <p>Ціна: @product.Price</p>
+                        <p>Наявна кількість: @product.Amount</p>
+                        <p>Категорія: @product.Category.Name</p>
+                        <a class="btn btn-dark" asp-action="Details" asp-route-id="@product.Id">Детальніше</a>
+                    </div>
                 </div>
             }
         }
